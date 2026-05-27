@@ -5,20 +5,28 @@
     <title>Cadastrar</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
-<h2>CADASTRO</h2>
+<h2 style="text-align: center;">CADASTRO</h2>
 <form th:action="@{/registrar}" th:object="${user}" method="post">
-    <label>Nome: </label>
-    <input type="text" th:field="*{nome}" placeholder="Seu nome"/>
-    <br/><br/>
-    <label>Email: </label>
-    <input type="email" th:field="*{email}" placeholder="seu@email.com"/>
-    <br/><br/>
-    <label>Senha: </label>
-    <input type="password" th:field="*{senha}"/>
-    <br/><br/>
-    <button type="submit"> Cadastrar</button>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <label>Nome: </label>
+                <input type="text" th:field="*{nome}" placeholder="Seu nome"/>
+                <br/><br/>
+                <label>Email: </label>
+                <input type="email" th:field="*{email}" placeholder="seu@email.com"/>
+                <br/><br/>
+                <label>Senha: </label>
+                <input type="password" th:field="*{senha}"/>
+                <br/><br/>
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+            </div>
+        </div>
+    </div>
 </form>
+    <script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

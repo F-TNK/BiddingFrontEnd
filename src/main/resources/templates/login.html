@@ -5,17 +5,19 @@
     <title>Logar</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
 <h2>LOGAR</h2>
 <form th:action="@{/logar}" th:object="${credenciais}" method="post">
     <label>E-mail: </label>
     <input type="email" th:field="*{email}"/>
-    <br/>
+    <br><br/>
     <label>Senha: </label>
     <input type="password" th:field="*{senha}"/>
-    <br/>
-    <button type="submit">Logar</button>
+    <br><br/>
+    <button type="submit" class="btn btn-success">Logar</button>
 </form>
+    <script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
