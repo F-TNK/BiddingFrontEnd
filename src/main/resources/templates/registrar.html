@@ -1,47 +1,88 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Cadastrar</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}" rel="stylesheet">
+    <head>
+        <title>Cadastrar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}" rel="stylesheet">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navegação</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/login">ENTRAR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/registrar">CADASTRO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="/inicio" tabindex="-1" aria-disabled="true">INICIO</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            OPÇÕES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/login">ENTRAR</a></li>
+                            <li><a class="dropdown-item" href="/registrar">CADASTRO</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ajuda</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 </head>
-<body>
-<h2 style="text-align: center;">CADASTRO</h2>
-<br>
-<form th:action="@{/registrar}" th:object="${user}" method="post">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <div class="row justify-content-center">
-                    <label class="col-2">Nome: </label>
-                </div>
-                <div class="row justify-content-center">
-                    <input class="col-6" type="text" th:field="*{nome}" placeholder="Seu nome"/>
-                </div>
-                <br/>
-                <div class="row justify-content-center">
-                    <label class="col-2">Email: </label>
-                </div>
-                <div class="row justify-content-center">
-                    <input class="col-6" type="email" th:field="*{email}" placeholder="seu@email.com"/>
-                </div>
-                <br/>
-                <div class="row justify-content-center">
-                    <label class="col-2">Senha: </label>
-                </div>
-                <div class="row justify-content-center">
-                    <input class="col-6" type="password" th:field="*{senha}"/>
-                </div>
-                <br/>
-                <div class="row justify-content-center">
-                    <button type="submit" class="btn btn-success col-3">Cadastrar</button>
-                </div>
+
+<body style="height: 100vh">
+    <br>
+    <div class="d-flex justify-content-center align-items-center" style="height: 80%">
+        <div class="card" style="width: 35rem;">
+            <div class="card-body">
+                <form th:action="@{/registrar}" th:object="${user}" method="post">
+                    <h2 style="text-align: center;">CADASTRO</h2>
+                    <div class="row justify-content-center">
+                        <label class="col-2">Nome: </label>
+                    </div>
+                    <div class="row justify-content-center">
+                        <input class="col-5" type="text" th:field="*{nome}" placeholder="Seu nome"/>
+                    </div>
+                    <br/>
+                    <div class="row justify-content-center">
+                        <label class="col-2">Email: </label>
+                    </div>
+                    <div class="row justify-content-center">
+                        <input class="col-5" type="email" th:field="*{email}" placeholder="seu@email.com"/>
+                    </div>
+                    <br/>
+                    <div class="row justify-content-center">
+                        <label class="col-2">Senha: </label>
+                    </div>
+                    <div class="row justify-content-center">
+                        <input class="col-5" type="password" th:field="*{senha}"/>
+                    </div>
+                    <br/>
+                    <div class="row justify-content-center">
+                        <button type="submit" class="btn btn-success col-3">Cadastrar</button>
+                    </div>
             </div>
         </div>
     </div>
 </form>
-    <script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

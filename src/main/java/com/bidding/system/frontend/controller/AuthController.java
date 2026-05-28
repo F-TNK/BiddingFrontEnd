@@ -52,4 +52,16 @@ public class AuthController {
         restService.registrar(user);
         return "redirect:/login";
     }
+    
+    // -------------------------------------------------------------------------------------
+    @PostMapping("/teste")
+    public String teste(@ModelAttribute UserRequestDTO credenciais, HttpSession session) {
+        // Chama o serviço de autenticação para obter um token JWT ou similar.
+        String token = restService.logar(credenciais);
+        // Armazena o token na sessão HTTP para uso posterior.
+        System.out.println("token: " + token);
+        session.setAttribute("token", token);
+        // Redireciona de volta para a página inicial após login bem sucedido.
+        return "redirect:/";
+    }
 }
