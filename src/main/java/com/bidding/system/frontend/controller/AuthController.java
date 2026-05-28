@@ -1,15 +1,18 @@
 package com.bidding.system.frontend.controller;
 
+import com.bidding.system.frontend.model.EditalDTO;
 import com.bidding.system.frontend.model.UserDTO;
 import com.bidding.system.frontend.model.UserRequestDTO;
 import com.bidding.system.frontend.service.ApiService;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @Controller
 public class AuthController {
@@ -53,15 +56,13 @@ public class AuthController {
         return "redirect:/login";
     }
     
-    // -------------------------------------------------------------------------------------
-    @PostMapping("/teste")
-    public String teste(@ModelAttribute UserRequestDTO credenciais, HttpSession session) {
-        // Chama o serviço de autenticação para obter um token JWT ou similar.
-        String token = restService.logar(credenciais);
-        // Armazena o token na sessão HTTP para uso posterior.
-        System.out.println("token: " + token);
-        session.setAttribute("token", token);
-        // Redireciona de volta para a página inicial após login bem sucedido.
-        return "redirect:/";
+    @GetMapping("/editais")
+    public List<EditalDTO> listarEditais(
+            // @RequestHeader: extrai o header Authorization contendo o token JWT
+            @RequestHeader("Authorization") String auth
+    ) {
+        String token = auth.replace("Bearer ", "");
+        List<EditalDTO> lista = restService.listarEditais(token);
+        return lista;
     }
 }

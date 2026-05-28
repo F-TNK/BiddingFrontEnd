@@ -63,22 +63,6 @@ public class ApiService {
                 .body(String.class);
     }
     
-    public String teste(UserRequestDTO user) {
-        // Inicia a construção de uma requisição POST.
-        return restClient.post()
-                // Define o caminho relativo ao endpoint de autenticação.
-                // A URL final será "http://localhost:3333/api/auth/logar".
-                .uri("/autenticar/teste")
-                // Define o corpo da requisição como o DTO de login.
-                // O Spring converte automaticamente este objeto para JSON.
-                .body(user)
-                // Dispara a requisição e obtém a resposta do servidor.
-                .retrieve()
-                // Lê o corpo da resposta e converte para String.
-                // Use outro DTO aqui se a API retornar um objeto JSON complexo.
-                .body(String.class);
-    }
-
     /**
      * Lista os editais do backend usando o token JWT no cabeçalho Authorization.
      *
