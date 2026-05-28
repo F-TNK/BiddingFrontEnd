@@ -9,20 +9,35 @@
 </head>
 <body>
 <h2 style="text-align: center;">CADASTRO</h2>
+<br>
 <form th:action="@{/registrar}" th:object="${user}" method="post">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-4">
-                <label>Nome: </label>
-                <input type="text" th:field="*{nome}" placeholder="Seu nome"/>
-                <br/><br/>
-                <label>Email: </label>
-                <input type="email" th:field="*{email}" placeholder="seu@email.com"/>
-                <br/><br/>
-                <label>Senha: </label>
-                <input type="password" th:field="*{senha}"/>
-                <br/><br/>
-                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <div class="row justify-content-center">
+                    <label class="col-2">Nome: </label>
+                </div>
+                <div class="row justify-content-center">
+                    <input class="col-6" type="text" th:field="*{nome}" placeholder="Seu nome"/>
+                </div>
+                <br/>
+                <div class="row justify-content-center">
+                    <label class="col-2">Email: </label>
+                </div>
+                <div class="row justify-content-center">
+                    <input class="col-6" type="email" th:field="*{email}" placeholder="seu@email.com"/>
+                </div>
+                <br/>
+                <div class="row justify-content-center">
+                    <label class="col-2">Senha: </label>
+                </div>
+                <div class="row justify-content-center">
+                    <input class="col-6" type="password" th:field="*{senha}"/>
+                </div>
+                <br/>
+                <div class="row justify-content-center">
+                    <button type="submit" class="btn btn-success col-3">Cadastrar</button>
+                </div>
             </div>
         </div>
     </div>
