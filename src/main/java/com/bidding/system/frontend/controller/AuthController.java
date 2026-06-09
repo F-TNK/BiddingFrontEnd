@@ -20,6 +20,21 @@ public class AuthController {
     // Injeção do serviço de autenticação para delegar a lógica de login.    
     @Autowired
     private ApiService restService;
+    
+     // Tratador para requisições GET no caminho raiz "/".
+    // Retorna o nome da view Thymeleaf "index".
+    @GetMapping("/")
+    public String home(
+            HttpSession session
+    ) {
+        Object token = session.getAttribute("token");
+        
+        if(token == null) {
+            return "redirect:/login";
+        }
+        
+        return "index";
+    }
 
     // Tratador para requisições GET em "/login".
     // Prepara o modelo com um objeto UserRequestDTO vazio para preencher o formulário.
@@ -56,8 +71,4 @@ public class AuthController {
         return "redirect:/login";
     }
     
-//    @GetMapping("/editais")
-//    public List<EditalDTO> listarEditais(){
-//        return 
-//    }
 }

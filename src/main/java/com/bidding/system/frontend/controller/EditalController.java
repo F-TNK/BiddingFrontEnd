@@ -45,7 +45,23 @@ public class EditalController {
         return "editais";
     }
     
-    
+    @GetMapping("/editais/novo")
+    public String novoEditalForm(HttpSession session, Model model) {
+        String token = (String) session.getAttribute("token");
+        if (token == null) {
+            return "redirect:/login";
+        }
+
+        String role = (String) session.getAttribute("role");
+        if (!"COMPRADOR".equals(role)) {
+            return "redirect:/editais";
+        }
+
+        model.addAttribute("edital", new EditalDTO());
+        model.addAttribute("nome", session.getAttribute("nome"));
+        model.addAttribute("role", session.getAttribute("role"));
+        return "novo-edital";
+    }
     
     
 }
