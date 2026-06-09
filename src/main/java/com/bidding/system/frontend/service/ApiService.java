@@ -69,7 +69,7 @@ public class ApiService {
      * @param token token de autenticação recebido após o login
      * @return lista de editais retornada pela API
      */
-    public List<EditalDTO> listarEditais(String token) {
+    public List<EditalDTO> listarEditais(String token, boolean urgente) {
         // Faz uma requisição GET para o endpoint de editais.
         EditalDTO[] editais = restClient.get()
                 .uri("/editais")

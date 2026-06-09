@@ -40,7 +40,7 @@ public class AuthController {
         System.out.println("token: " + token);
         session.setAttribute("token", token);
         // Redireciona de volta para a página inicial após login bem sucedido.
-        return "redirect:/";
+        return "redirect:/editais";
     }
 
     @GetMapping("/registrar")
@@ -56,13 +56,8 @@ public class AuthController {
         return "redirect:/login";
     }
     
-    @GetMapping("/editais")
-    public List<EditalDTO> listarEditais(
-            // @RequestHeader: extrai o header Authorization contendo o token JWT
-            @RequestHeader("Authorization") String auth
-    ) {
-        String token = auth.replace("Bearer ", "");
-        List<EditalDTO> lista = restService.listarEditais(token);
-        return lista;
-    }
+//    @GetMapping("/editais")
+//    public List<EditalDTO> listarEditais(){
+//        return 
+//    }
 }
