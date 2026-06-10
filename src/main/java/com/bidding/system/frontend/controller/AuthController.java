@@ -32,7 +32,6 @@ public class AuthController {
         if(token == null) {
             return "redirect:/login";
         }
-        
         return "index";
     }
 
@@ -52,10 +51,19 @@ public class AuthController {
         // Chama o serviço de autenticação para obter um token JWT ou similar.
         String token = restService.logar(credenciais);
         // Armazena o token na sessão HTTP para uso posterior.
+        
+        String role = (String) session.getAttribute("role");
         System.out.println("token: " + token);
         session.setAttribute("token", token);
         // Redireciona de volta para a página inicial após login bem sucedido.
+        session.setAttribute("role", role);
         return "redirect:/editais";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/login";
     }
 
     @GetMapping("/registrar")
@@ -66,7 +74,15 @@ public class AuthController {
     }
 
     @PostMapping("/registrar")
-    public String mandarRegistro(@ModelAttribute UserDTO user) {
+    public String mandarRegistro(@ModelAttribute UserDTO user, Model model) {
+        
+        // Gera erro para o front-end, retornando na mesma pagina com mensagem 
+        if (!user.getSenha().equals(user.getConfirmSenha())) {
+            model.addAttribute("erro", "As senhas não estão iguais");
+            model.addAttribute("user", user);
+            return "registrar";
+        }
+        
         restService.registrar(user);
         return "redirect:/login";
     }

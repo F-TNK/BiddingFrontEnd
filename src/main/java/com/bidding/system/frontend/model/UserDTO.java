@@ -19,6 +19,7 @@ public class UserDTO {
     private String email;
     // Senha do usuário (armazenada criptografada)
     private String senha;
+    private String confirmSenha;
     // Papel/função do usuário (exemplo: "COMPRADOR" ou "FORNECEDOR")
     private String role;
 
@@ -28,13 +29,16 @@ public class UserDTO {
 
     // Construtor com todos os parâmetros
     // Permite criar um usuário completamente inicializado em uma única chamada
-    public UserDTO(Long id, String nome, String email, String senha, String role) {
+
+    public UserDTO(Long id, String nome, String email, String senha, String confirmSenha, String role) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.confirmSenha = confirmSenha;
         this.role = role;
     }
+    
 
     // Método getter - retorna o id do usuário
     public Long getId() {
@@ -74,6 +78,14 @@ public class UserDTO {
     // Método setter - define a senha do usuário
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getConfirmSenha() {
+        return confirmSenha;
+    }
+
+    public void setConfirmSenha(String confirmSenha) {
+        this.confirmSenha = confirmSenha;
     }
 
     // Método getter - retorna o papel/função do usuário

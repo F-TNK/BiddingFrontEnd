@@ -16,7 +16,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     
     <main class="container py-5">
 
-            <!-- HEADER -->
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
 
                 <div>
@@ -24,13 +23,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         Editais
                     </h1>
                 </div>
+                
                 <div>
                     <a th:if="${role == 'COMPRADOR'}"
-                       th:href="@{/editais/novo}"
-                       class="btn btn-primary">
-
-                        + Novo Edital
-                    </a>
+                        th:href="@{/editais/novo}"
+                        class="btn btn-primary">
+                         + Novo Edital
+                     </a>
                     <!-- LOGOUT -->
                     <a th:href="@{/logout}"
                        class="btn btn-danger">
@@ -61,10 +60,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <tr th:each="edital : ${editais}">
                         <td class="px-3 fw-bold" th:text="${edital.id}"></td>
                         <td th:text="${edital.titulo}"></td>
-                        <td class="text-muted" th:text="${edital.descricao}"></td>
+                        <td th:text="${edital.descricao}"></td>
                         <td th:text="${edital.dataFechamentoFormatada}"></td>
                         <td>
-                            <span class="badge bg-primary" th:text="${edital.status}"></span>
+                            <span class="badge bg-success" th:text="${edital.status}"></span>
                         </td>
                     </tr>
                     <tr th:if="${#lists.isEmpty(editais)}">

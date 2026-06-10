@@ -53,14 +53,22 @@ public class ApiService {
                 .body(String.class);
     }
 
-    public void registrar(UserDTO user) {
+    public String registrar(UserDTO user) {
+        if (!user.getSenha().equals(user.getConfirmSenha())){
+            return "As senhas não estão iguais";
+        }
+        
         user.setRole("FORNECEDOR");
-        String retorno = restClient
+        user.setConfirmSenha(null);;
+//        String retorno = 
+                restClient
                 .post()
                 .uri("/autenticar/registrar")
                 .body(user)
                 .retrieve()
                 .body(String.class);
+                
+        return null;
     }
     
     /**

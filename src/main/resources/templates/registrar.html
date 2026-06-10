@@ -41,34 +41,54 @@
             </div>
             
             <div class="card-body p-4">
+                
+                <div th:if="${erro}" class="alert alert-danger text-center">
+                    <span th:text="${erro}"></span>
+                </div>
+
                 <form th:action="@{/registrar}" th:object="${user}" method="post">
+                    
+                    
                     <div class="row justify-content-center">
-                        <label class="col-2" style="padding-left: 20px;">Nome</label>
+                        <label class="col-2" style="padding-left: 18px;">Nome</label>
                     </div>
                     <div class="row justify-content-center">
                         <input class="form-control rounded-pill" style="max-width: 300px;" type="text" th:field="*{nome}" placeholder="Seu nome"/>
                     </div>
                     <br/>
+                    
                     <div class="row justify-content-center">
-                        <label class="col-2" style="padding-left: 22px;">Email</label>
+                        <label class="col-2" style="padding-left: 20px;">Email</label>
                     </div>
                     <div class="row justify-content-center">
                         <input class="form-control rounded-pill" style="max-width: 300px;" type="email" th:field="*{email}" placeholder="seu@email.com"/>
                     </div>
                     <br/>
+                    
                     <div class="row justify-content-center">
-                        <label class="col-2" style="padding-left: 20px;">Senha</label>
+                        <label class="col-2" style="padding-left: 18px;">Senha</label>
                     </div>
                     <div class="row justify-content-center">
-                        <input class="form-control rounded-pill" style="max-width: 300px;" type="password" th:field="*{senha}"/>
+                        <input class="form-control rounded-pill" style="max-width: 300px;" type="password" th:field="*{senha}" placeholder="********"/>
                     </div>
                     <br/>
+                    
+                    <div>
+                        <label class="row justify-content-center" style="padding-right: 8px;">Confirmar Senha</label>
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                        <input class="form-control rounded-pill" style="max-width: 300px;" type="password" th:field="*{confirmSenha}" placeholder="********"/>
+                    </div>
+                    <br/>
+                    
                     <div class="row justify-content-center">
                         <button type="submit" class="btn btn-info text-white col-3">Cadastrar</button>
                     </div>
                     <div class="text-center mt-3">
                         <a class="text-decoration-none" th:href="@{/login}">Já tem uma conta? Logar</a>
                     </div>
+                </form>
             </div>
         </div>
     </div>
